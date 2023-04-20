@@ -183,7 +183,7 @@ class CreateRecipeSerializer(serializers.ModelSerializer):
             RecipeIngredient.objects.create(
                 ingredient=ingredient, recipe=recipe, amount=i['amount']
             )
-    
+
     def create(self, validated_data):
         """
         Создание рецепта.
@@ -337,6 +337,7 @@ class UserRegSerializer(serializers.Serializer):
     email = serializers.EmailField(max_length=254, required=True)
 
     def validate_username(self, value):
+        value = value.lower()
         if value == 'me':
             raise serializers.ValidationError(
                 'Недопустимое имя пользователя')
@@ -346,8 +347,7 @@ class UserRegSerializer(serializers.Serializer):
 
     def validate(self, data):
         email_username_taken = User.objects.filter(
-            Q(email=data.get('email')) | Q(username=data.get('username'))
-        ).exists()
+            Q(email__iexact='email') | Q(username__iexact='username'))
         user_exists = User.objects.filter(
             email=data.get('email'),
             username=data.get('username')).exists()

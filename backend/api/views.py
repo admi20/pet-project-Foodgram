@@ -21,7 +21,7 @@ from users.models import Subscription, User
 
 from .filters import IngredientFilter, RecipeFilter
 from .pagination import CustomPagination
-from .permissions import AdminOrSuperuser, AdminOrReadOnly
+from .permissions import AdminOrSuperuser, IsAuthorAdminOrReadOnly
 from .serializers import (CreateRecipeSerializer, FavoriteSerializer,
                           IngredientSerializer, RecipeSerializer, 
                           ShoppingCartSerializer,
@@ -42,7 +42,7 @@ class CustomViewSet(
 class RecipeViewSet(viewsets.ModelViewSet):
     """ Просмотр/изменение/добавлениеудаление Рецептов. """
 
-    permission_classes = [AdminOrReadOnly, ]
+    permission_classes = [IsAuthorAdminOrReadOnly]
     pagination_class = CustomPagination
     queryset = Recipe.objects.all()
     filter_backends = [DjangoFilterBackend, ]
@@ -146,15 +146,11 @@ class SubscribeView(APIView):
         return Response(status=status.HTTP_400_BAD_REQUEST)
 
     def delete(self, request, id):
-        author = get_object_or_404(User, id=id)
-        if Subscription.objects.filter(
-           user=request.user, author=author).exists():
-            subscription = get_object_or_404(
-                Subscription, user=request.user, author=author
-            )
-            subscription.delete()
-            return Response(status=status.HTTP_204_NO_CONTENT)
-        return Response(status=status.HTTP_400_BAD_REQUEST)
+        author = get_object_or_404(User, id=id)        
+        subscription = get_object_or_404(Subscription, 
+                                         user=request.user, author=author)
+        subscription.delete()
+        return Response(status=status.HTTP_204_NO_CONTENT)        
 
 
 class ShowSubscriptionsView(ListAPIView):

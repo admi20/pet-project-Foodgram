@@ -46,7 +46,7 @@ class Recipe(models.Model):
 
     name = models.CharField(max_length=256,
                             verbose_name='Категория',)
-    
+
     image = models.ImageField(
         'Изображение',
         upload_to='recipes/images/'
@@ -132,7 +132,7 @@ class RecipeTag(models.Model):
 
 
 class ShoppingCart(models.Model):
-    """ Модель корзины """
+    """ Модель корзиныlsls """
 
     user = models.ForeignKey(
         User,

@@ -1,7 +1,5 @@
 version: '3.3'
 services:
-
-  services:
   db:
     image: postgres:13.0-alpine
     volumes:
@@ -10,7 +8,9 @@ services:
       - ./.env
   
   backend:
-    image: admi20/backend:v1
+    build:
+      context: ../frontend
+      dockerfile: Dockerfile
     volumes:
       - ../static/:/app/static/
       - ../media/:/app/media/recipes/
@@ -18,14 +18,14 @@ services:
       - db
     env_file:
       - ./.env
-    restart: always
-
+  
   frontend:
     build:
-      image: admi20/frontend:v1
+      context: ../frontend
       dockerfile: Dockerfile
     volumes:
       - ../frontend/:/app/result_build/
+
   nginx:
     image: nginx:1.19.3
     ports:
