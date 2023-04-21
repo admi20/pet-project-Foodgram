@@ -8,9 +8,8 @@ services:
       - ./.env
   
   backend:
-    build:
-      context: ../frontend
-      dockerfile: Dockerfile
+    build: .
+    restart: always    
     volumes:
       - ../static/:/app/static/
       - ../media/:/app/media/recipes/
