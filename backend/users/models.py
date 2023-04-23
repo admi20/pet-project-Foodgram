@@ -3,6 +3,8 @@ from django.core.validators import RegexValidator
 from django.db import models
 from django.db.models import UniqueConstraint
 
+from .validators import validate_username
+
 
 class User(AbstractUser):
     ROLE_USER = 'user'
@@ -65,6 +67,26 @@ class User(AbstractUser):
             self.role == self.ROLE_ADMIN
             or self.is_superuser
         )
+    
+
+class User(AbstractUser):
+    """ Кастомная модель пользователя. """
+
+    email = models.EmailField('Почта', max_length=254, unique=True)
+    first_name = models.CharField('Имя', max_length=150, blank=False)
+    last_name = models.CharField('Фамилия', max_length=150, blank=False)
+    username = models.CharField(
+        'Юзернейм',
+        max_length=150,
+        validators=[validate_username])
+    USERNAME_FIELD = 'email'
+    REQUIRED_FIELDS = ['username', 'first_name', 'last_name']
+
+    class Meta:
+        ordering = ['-pk']
+
+    def __str__(self):
+        return self.username
 
 
 class Subscription(models.Model):
