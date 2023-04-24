@@ -41,7 +41,7 @@ jobs:
         uses: docker/build-push-action@v2 
         with:
           push: true
-          context: ./backend/foodgram/
+          context: ./backend
           tags: admi20/backend1:latest
 
   deploy:
