@@ -56,8 +56,8 @@ jobs:
           key: ${{ secrets.SSH_KEY }}
           passphrase: ${{ secrets.PASSPHRASE }}
           script: |
-            sudo docker pull ruzhova/backend:v1
-            sudo docker pull ruzhova/frontend:v1
+            sudo docker pull admi20/backend1:latest
+            sudo docker pull admi20/frontend1:latest
             sudo docker-compose stop
             sudo docker-compose rm backend
             sudo docker-compose rm frontend
