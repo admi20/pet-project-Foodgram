@@ -42,7 +42,7 @@ jobs:
         with:
           push: true
           context: ./backend/foodgram/
-          tags: ruzhova/backend:latest
+          tags: admi20/backend1:latest
 
   deploy:
     runs-on: ubuntu-latest
