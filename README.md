@@ -1,8 +1,7 @@
 ### Foodgram - социальная сеть о кулинарии
 ДИПЛОМНАЯ РАБОТА
 
-![workflow status](https://github.com/admi20/foodgram-project-react/actions/workflows/
-foodgram-project-react/badge.svg)
+![workflow status](https://github.com/admi20/foodgram-project-react/actions/workflows/foodgram.yml/badge.svg)
 
 [Проверьте работоспособность приложения](http://158.160.28.154/api/)
 [Администрирование](http://158.160.28.154/admin/)
