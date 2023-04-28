@@ -1,9 +1,12 @@
 ### Foodgram - социальная сеть о кулинарии
 ДИПЛОМНАЯ РАБОТА
 
-![workflow status](https://github.com/admi20/foodgram-project-react/actions/workflows/yamdb_workflow.yml/badge.svg)
+![workflow status](https://github.com/admi20/foodgram-project-react/actions/workflows/
+foodgram-project-react.yml/badge.svg)
 
-[Проверьте работоспособность приложения](http://localhost/admin/)
+[Проверьте работоспособность приложения](http://158.160.28.154/api/)
+[Администрирование](http://158.160.28.154/admin/)
+
 
 
 #### Описание
@@ -83,6 +86,6 @@ POSTGRES_PASSWORD=postgres # пароль для подключения к БД 
 DB_HOST=db # название сервиса (контейнера)\
 DB_PORT=5432 # порт для подключения к БД
 
-#### Команда разработчиков
+#### Pазработчик
 
-Dmitry Parkhomenko, Petr Shopin, Dmitrii Abashkin
+Dmitrii Abashkin

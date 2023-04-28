@@ -12,7 +12,6 @@ class IngredientsInLine(admin.TabularInline):
 @admin.register(Favorite)
 class FavoriteAdmin(admin.ModelAdmin):
     list_display = ['id', 'user', 'recipe']
-    search_fields = ['user__username', 'user__email']
     empty_value_display = EMPTY
 
 
@@ -26,12 +25,11 @@ class IngredientAdmin(admin.ModelAdmin):
 @admin.register(Recipe)
 class RecipeAdmin(admin.ModelAdmin):
     list_display = ['id', 'name', 'author', 'favorites']
-    search_fields = ['name', 'author__username']
+    search_fields = ['name', 'author']
     list_filter = ['tags']
     empty_value_display = EMPTY
     inlines = (
-        IngredientsInLine,
-    )
+        IngredientsInLine,)
 
     def favorites(self, obj):
         if Favorite.objects.filter(recipe=obj).exists():
