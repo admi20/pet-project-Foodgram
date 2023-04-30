@@ -4,8 +4,14 @@
 ![workflow status](https://github.com/admi20/foodgram-project-react/actions/workflows/foodgram.yml/badge.svg)
 
 [Проверьте работоспособность приложения](http://158.160.15.136/signin/)\
-[Администрирование](http://158.160.15.136/api/?format=api)
+[api](http://158.160.15.136/api/?format=api)\
+[Администрирование](http://158.160.15.136/admin/)
 
+login: dima@mail.ru
+password: 101030qQ
+
+
+P.S. Я знаю, что не работает выбор ингредиентов, но я не знаю как это починить...
 
 
 #### Описание
