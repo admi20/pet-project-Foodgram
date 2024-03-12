@@ -89,4 +89,4 @@ DB_PORT=5432 # порт для подключения к БД
 
 #### Pазработчик
 
-Dmitrii Abashkin
+Anna Shevtsova
